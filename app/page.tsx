@@ -31,7 +31,10 @@ export default function Home() {
           where business deals take place, Users are responsible for the
           management of their credentials.
         </p>
-        <LoginButton>
+        <LoginButton
+        // mode="modal"
+        // asChild
+        >
           <Button size="lg" variant="secondary" className="flex gap-2 w-full">
             Sign in{" "}
             <PiArrowCircleRightDuotone className="text-2xl text-green-700" />

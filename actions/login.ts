@@ -16,7 +16,8 @@ import { getTwoFactorConfirmationByUserId } from "@/data/two-factor-confirmation
 // import { FaCode } from "react-icons/fa";
 
 export const login = async (
-  loginCredentials: zod.infer<typeof LoginSchema>
+  loginCredentials: zod.infer<typeof LoginSchema>,
+  callbackUrl?: string | null
 ) => {
   const validatedFields = LoginSchema.safeParse(loginCredentials);
   if (!validatedFields.success) {
@@ -85,7 +86,7 @@ export const login = async (
     await signIn("credentials", {
       email,
       password,
-      redirectTo: DEFAULT_LOGIN_REDIRECT,
+      redirectTo: callbackUrl || DEFAULT_LOGIN_REDIRECT,
     });
   } catch (error) {
     // Handle authentication errors
