@@ -19,7 +19,7 @@ export const Header = ({ label }: HeaderProps) => {
       {/* <h1 className={cn("text-3xl font-semibold", font.className)}>Dealo</h1> */}
       <Link href="/">
         <Image
-          src="/DEALO_ICON_white.png"
+          src="https://res.cloudinary.com/dtujpq8po/image/upload/v1712158494/uir9zzsq1tpqm39i2qr5.png"
           alt=""
           height={100}
           width={100}

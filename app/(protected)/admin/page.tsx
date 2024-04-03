@@ -8,6 +8,8 @@ import { UserRole } from "@prisma/client";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
 import { admin } from "@/actions/admin";
+import { TbInfoSquareRoundedFilled } from "react-icons/tb";
+import Link from "next/link";
 
 type Props = {};
 
@@ -25,7 +27,7 @@ const AdminPage = () => {
     });
   };
   const onApiClick = () => {
-    fetch("/api/admin").then((response) => {
+    fetch("/api/education").then((response) => {
       if (response.ok) {
         toast.success("ALLOWED API Route!");
       } else {
@@ -42,13 +44,19 @@ const AdminPage = () => {
         <RoleGate allowedRole={UserRole.ADMIN}>
           <FormSuccess message="you are allowed to see this content!" />
         </RoleGate>
+        <p className="flex items-center">
+          <TbInfoSquareRoundedFilled className="gap-2 text-xl" />
+          Only the admin can access this links
+        </p>
         <div className="flex flex-row items-center justify-between rounded-lg border p-3 shadow-md">
-          <p className="text-sm font-medium">Admin-only API Route</p>
-          <Button onClick={onApiClick}>Click to test</Button>
+          <p className="text-sm font-medium">Education</p>
+          <Link href="/education">
+            <Button onClick={onApiClick}>Open</Button>
+          </Link>
         </div>
         <div className="flex flex-row items-center justify-between rounded-lg border p-3 shadow-md">
-          <p className="text-sm font-medium">Admin-only Server Action</p>
-          <Button onClick={onServerActionClick}>Click to test</Button>
+          <p className="text-sm font-medium">Medicine</p>
+          <Button onClick={onServerActionClick}>Open</Button>
         </div>
       </CardContent>
     </Card>

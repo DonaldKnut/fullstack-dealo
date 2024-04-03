@@ -79,9 +79,7 @@ const SettingsPage = () => {
     // </div>
     <>
       <Card className="w-[450px]">
-        <CardHeader>
-          <p> Settings</p>
-        </CardHeader>
+        <CardHeader></CardHeader>
         <CardContent>
           <Form {...form}>
             <form className="space-y-6" onSubmit={form.handleSubmit(onSubmit)}>
@@ -189,7 +187,7 @@ const SettingsPage = () => {
                     </FormItem>
                   )}
                 />
-                {user?.isOAuth === false && (
+                {/* {user?.isOAuth === false && (
                   <>
                     <FormField
                       control={form.control}
@@ -213,7 +211,7 @@ const SettingsPage = () => {
                       )}
                     />
                   </>
-                )}
+                )} */}
               </div>
               <FormSuccess message={success} />
               <FormError message={error} />

@@ -8,7 +8,7 @@ export default function Home() {
       <main className="flex h-full flex-col items-center justify-center bg-[radial-gradient(ellipse_at_top, _var(-tw-gradient-stops))] from-sky-800 to-blue-800">
         <div className="space-y-6">
           <Image
-            src="/lock_white.png"
+            src="https://res.cloudinary.com/dtujpq8po/image/upload/v1712158671/puevcwnrnfkndzghmkx6.png"
             className="mx-auto my-4"
             width={60}
             height={60}
@@ -16,7 +16,7 @@ export default function Home() {
           />
           <div className="text-6xl font-semibold text-black drop-shadow-md">
             <Image
-              src="/DEALO_ICON_white.png"
+              src="https://res.cloudinary.com/dtujpq8po/image/upload/v1712158494/uir9zzsq1tpqm39i2qr5.png"
               alt="dealo icon"
               width={190}
               height={190}
