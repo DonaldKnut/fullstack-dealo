@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Lexend as NextLexend } from "next/font/google"; // Renamed import to resolve conflict
 import "./globals.css";
 import { SessionProvider } from "next-auth/react";
 import { Toaster } from "@/components/ui/sonner";
 
-const inter = Inter({ subsets: ["latin"] });
+const Lexend = NextLexend({ subsets: ["latin"] }); // Renamed variable to resolve conflict
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -19,7 +19,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <SessionProvider>
-        <body className={`${inter.className} auth_page`}>
+        <body className={`${Lexend.className} auth_page`}>
           <Toaster />
           {children}
         </body>

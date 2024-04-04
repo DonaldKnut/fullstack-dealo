@@ -1,20 +1,18 @@
 "use client";
-import React from "react";
+import Link from "next/link";
 import { useCurrentRole } from "@/hooks/use-current-role";
 import { Card, CardContent, CardHeader } from "@/components/ui/Card";
 import { RoleGate } from "@/components/auth/role-gate";
 import { FormSuccess } from "@/components/form-success";
-import { UserRole } from "@prisma/client";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
 import { admin } from "@/actions/admin";
 import { TbInfoSquareRoundedFilled } from "react-icons/tb";
-import Link from "next/link";
-
-type Props = {};
+import { UserRole } from "@prisma/client";
 
 const AdminPage = () => {
-  const role = useCurrentRole();
+  const userRole = useCurrentRole();
+
   const onServerActionClick = () => {
     admin().then((data) => {
       if (data.error) {
@@ -26,6 +24,7 @@ const AdminPage = () => {
       }
     });
   };
+
   const onApiClick = () => {
     fetch("/api/education").then((response) => {
       if (response.ok) {
@@ -35,6 +34,7 @@ const AdminPage = () => {
       }
     });
   };
+
   return (
     <Card className="w-[400px]">
       <CardHeader>
@@ -42,22 +42,26 @@ const AdminPage = () => {
       </CardHeader>
       <CardContent className="space-y-4">
         <RoleGate allowedRole={UserRole.ADMIN}>
-          <FormSuccess message="you are allowed to see this content!" />
+          <FormSuccess message="You are allowed to see this content!" />
         </RoleGate>
         <p className="flex items-center">
-          <TbInfoSquareRoundedFilled className="gap-2 text-xl" />
-          Only the admin can access this links
+          <TbInfoSquareRoundedFilled className="gap-2 text-xl mr-2" />
+          Only the admin can access these links
         </p>
-        <div className="flex flex-row items-center justify-between rounded-lg border p-3 shadow-md">
-          <p className="text-sm font-medium">Education</p>
-          <Link href="/education">
-            <Button onClick={onApiClick}>Open</Button>
-          </Link>
-        </div>
-        <div className="flex flex-row items-center justify-between rounded-lg border p-3 shadow-md">
-          <p className="text-sm font-medium">Medicine</p>
-          <Button onClick={onServerActionClick}>Open</Button>
-        </div>
+        {userRole === UserRole.ADMIN && (
+          <>
+            <div className="flex flex-row items-center justify-between rounded-lg border p-3 shadow-md">
+              <p className="text-sm font-medium">Education</p>
+              <Link href="/learn">
+                <Button>Open</Button>
+              </Link>
+            </div>
+            <div className="flex flex-row items-center justify-between rounded-lg border p-3 shadow-md">
+              <p className="text-sm font-medium">Medicine</p>
+              <Button onClick={onServerActionClick}>Open</Button>
+            </div>
+          </>
+        )}
       </CardContent>
     </Card>
   );

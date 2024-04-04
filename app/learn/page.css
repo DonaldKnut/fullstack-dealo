@@ -1,0 +1,25 @@
+body {
+  padding: 20px;
+}
+
+@media (min-width: 477px) {
+  .ai_image {
+    width: 435px;
+  }
+}
+
+@media (min-width: 768px) {
+  .ai_wrapper {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  .ai_first_wrap {
+    width: 40%;
+  }
+
+  .ai_image {
+    width: 400px;
+  }
+}
